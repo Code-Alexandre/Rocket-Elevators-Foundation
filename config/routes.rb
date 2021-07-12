@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :interventions
   resources :leads
   devise_for :users
   resources :quotes
@@ -16,8 +17,6 @@ Rails.application.routes.draw do
   get '/commercial', to: 'website#commercial'
 
   get '/quote', to: 'website#quote'
-
-  get '/google', to: 'google#maps'
 
   post '/watson/greetings', to: 'watson#greetings'
 
