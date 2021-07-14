@@ -1,5 +1,6 @@
 class Elevator < ApplicationRecord
     belongs_to  :column, class_name: "Column", optional: true
+    has_many :interventions
     before_update :old_status
 
     def old_status

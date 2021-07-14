@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :interventions
+  resources :interventions do
+    get :buildings_for_customer, on: :collection
+    get :batteries_for_building, on: :collection
+    get :columns_for_battery, on: :collection
+    get :elevators_for_column, on: :collection
+  end
   resources :leads
   devise_for :users
   resources :quotes
@@ -19,6 +24,8 @@ Rails.application.routes.draw do
   get '/quote', to: 'website#quote'
 
   post '/watson/greetings', to: 'watson#greetings'
+
+
 
 end
 

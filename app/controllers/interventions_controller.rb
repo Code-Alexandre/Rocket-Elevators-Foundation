@@ -19,10 +19,11 @@ class InterventionsController < ApplicationController
       end
     end        
   end
-  
-  # GET /interventions/1 or /interventions/1.json
+
+  # GET /interventions/show
   def show
   end
+  # GET /interventions/create
   def create
 
     @intervention = Intervention.new(intervention_params)
@@ -40,21 +41,22 @@ class InterventionsController < ApplicationController
     @intervention.status = 'Pending'
     @intervention.start_date = 'null'
     @intervention.end_date = 'null'
+    @intervention.employee_id
     @intervention.valid?
     if @intervention.elevator_id
-        @intervention.battery_id= ''
-        @intervention.column_id= ''
+        @intervention.battery_id
+        @intervention.column_id
     elsif @intervention.column_id
-      @intervention.battery_id= ''
-      @intervention.elevator_id= ''
-    elsif @intervention.battery_id  
-      @intervention.column_id= ''
-      @intervention.elevator_id= ''
+        @intervention.battery_id
+        @intervention.elevator_id
+    elsif @intervention.battery_id
+        @intervention.column_id
+        @intervention.elevator_id
     end
 
     @intervention.save
 
-    respond_to do |format|
+    respond_to do |format| 
       if @intervention.save
         format.html { redirect_to (rails_admin_path + "/intervention/#{@intervention.id}"), notice: "Intervention was successfully created." }
       else
@@ -73,39 +75,22 @@ class InterventionsController < ApplicationController
     @intervention = Intervention.new
   end
 
-  # GET /interventions/1/edit
+  # GET /interventions/edit
   def edit
   end
-
-  # POST /interventions or /interventions.json
-  # def create
-  #   @intervention = Intervention.new(intervention_params)
-
-  #   respond_to do |format|
-  #     if @intervention.save
-  #       format.html { redirect_to @intervention, notice: "Intervention was successfully created." }
-  #       format.json { render :show, status: :created, location: @intervention }
-  #     else
-  #       format.html { render :new, status: :unprocessable_entity }
-  #       format.json { render json: @intervention.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # PATCH/PUT /interventions/1 or /interventions/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @intervention.update(intervention_params)
-  #       format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
-  #       format.json { render :show, status: :ok, location: @intervention }
-  #     else
-  #       format.html { render :edit, status: :unprocessable_entity }
-  #       format.json { render json: @intervention.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # DELETE /interventions/1 or /interventions/1.json
+  # GET /interventions/update
+  def update
+    respond_to do |format|
+      if @intervention.update(intervention_params)
+        format.html { redirect_to @intervention, notice: "Intervention was successfully updated." }
+        format.json { render :show, status: :ok, location: @intervention }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @intervention.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  # GET /interventions/destroy
   def destroy
     @intervention.destroy
     respond_to do |format|
@@ -113,15 +98,44 @@ class InterventionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # GET /interventions/buildings_for_customer
+  def buildings_for_customer
+    @buildings = Building.where("customer_id = ?", params[:customer_id])
+    respond_to do |format|
+    format.json { render :json => @buildings }
+    end
+  end
+  # GET /interventions/batteries_for_building
+  def batteries_for_building
+    @batteries = Battery.where("building_id = ?", params[:building_id])
+    respond_to do |format|
+    format.json { render :json => @batteries }
+    end
+  end
+  # GET /interventions/columns_for_battery
+  def columns_for_battery
+    @columns = Column.where("battery_id = ?", params[:battery_id])
+    respond_to do |format|
+    format.json { render :json => @columns }
+    end
+  end
+  # GET /interventions/elevators_for_column
+  def elevators_for_column
+    @elevators = Elevator.where("column_id = ?", params[:column_id])
+    respond_to do |format|
+    format.json { render :json => @elevators }
+    end
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+      # Use callbacks to share common setup or constraints between actions.
     def set_intervention
       @intervention = Intervention.find(params[:id])
     end
-
+  
+      # Only allow a list of trusted parameters through.
     # Only allow a list of trusted parameters through.
-    def intervention_params
-      params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :start_date, :end_date, :result, :report, :status)
-    end
+  def intervention_params
+    params.require(:intervention).permit(:author_id, :customer_id, :building_id, :battery_id, :column_id, :elevator_id, :employee_id, :start_date, :end_date, :result, :report, :status)
+  end
 end
