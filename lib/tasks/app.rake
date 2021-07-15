@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 # require 'pg'
 # con = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', port: 5432, user: 'codeboxx', dbname:'AlexandreLanglois', password:'Codeboxx1!')
 # #con = PG::Connection.open(host: '127.0.0.1', port: 5432, user: 'codeboxx', dbname:'AlexandreLanglois', password:'Codeboxx1')
 # namespace :app do
 #   desc "Create the FactElevator Table"
 #   task factelevator: :environment do
+=======
+require 'pg'
+#con = PG::Connection.open(host: 'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com', port: 5432, user: 'codeboxx', dbname:'AlexandreLanglois', password:'Codeboxx1!')
+#con = PG::Connection.open(host: '127.0.0.1', port: 5432, user: 'codeboxx', dbname:'AlexandreLanglois', password:'Codeboxx1')
+namespace :app do
+  desc "Create the FactElevator Table"
+  task factelevator: :environment do
+>>>>>>> 81f6fffceea40eb1cd99e5476c3e51d5fc512f4d
 
 #     con.exec('DROP TABLE IF EXISTS FactElevator')
 #     con.exec('CREATE TABLE FactElevator(
