@@ -41,7 +41,7 @@ class InterventionsController < ApplicationController
     @intervention.status = 'Pending'
     @intervention.start_date = 'null'
     @intervention.end_date = 'null'
-    # @intervention.valid?
+    @intervention.valid?
 
 
 

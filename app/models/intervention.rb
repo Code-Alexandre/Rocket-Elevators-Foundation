@@ -59,11 +59,14 @@ class Intervention < ApplicationRecord
             # When getting the error 'hostname does not match the server certificate'
             # use the API at https://yoursubdomain.zendesk.com/api/v2
         end
+        customer = Customer.find(customer_id)
+        author = Employee.find(author_id)
+        employee = Employee.find(employee_id)
         # ticket = ZendeskAPI::Ticket.new("#{client}", :id => 1, :priority => "urgent")
         puts "This is the client after creation #{client}"
         client.tickets.create(
             :subject => "#{author_id} from #{customer_id}", 
-            :comment => { :value => "The author #{author_id} from company #{customer_id} can be reached at email #{building_id} and at column number #{column_id} elevator # #{elevator_id} has a project named #{result} which would require contribution from Rocket Elevators #{report}" }, 
+            :comment => { :value => "The author #{author.first_name} #{author.last_name} from company #{customer.compagny_name} BuildingID# #{building_id} , ColumnID# #{column_id} , ElevatorID# #{elevator_id} The employee to be assigned to the task #{employee.first_name} #{employee.last_name}which would require contribution from Rocket Elevators #{report}" }, 
             :submitter_id => client.current_user.id,
             :type => "question", 
             :priority => "normal")

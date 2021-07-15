@@ -42,7 +42,7 @@
       $.get('/interventions/buildings_for_customer', {customer_id: selected_customer_id}, function(result) {
         var buildings = result["buildings"];
         $("#intervention_building_id").empty();
-        $("#intervention_building_id").append('<option> </option>');
+        $("#intervention_building_id").append('<option value="">None</option>');
         $.each(result, function(i, j) {
           var row = '<option value="' + j.id + '">' + j.id + '</option>';
           $(row).appendTo("#intervention_building_id")
@@ -63,7 +63,7 @@
       var selected_building_id = $(this).val();
       $.get('/interventions/batteries_for_building', {building_id: selected_building_id}, function(result) {
         $("#intervention_battery_id").empty();
-        $("#intervention_battery_id").append('<option> </option>');
+        $("#intervention_battery_id").append('<option value="">None</option>');
         $.each(result, function(i, j) {
           var row = '<option value="' + j.id + '">' + j.id + '</option>';
           $(row).appendTo("#intervention_battery_id")
@@ -82,7 +82,7 @@
       var selected_battery_id = $(this).val();
       $.get('/interventions/columns_for_battery', {battery_id: selected_battery_id}, function(result) {
         $("#intervention_column_id").empty();
-        $("#intervention_column_id").append('<option> </option>');
+        $("#intervention_column_id").append('<option value="">None</option>');
         $.each(result, function(i, j) {
           var row = '<option value="' + j.id + '">' + j.id + '</option>';
           $(row).appendTo("#intervention_column_id")
@@ -98,7 +98,7 @@
       var selected_column_id = $(this).val();
       $.get('/interventions/elevators_for_column', {column_id: selected_column_id}, function(result) {
         $("#intervention_elevator_id").empty();
-        $("#intervention_elevator_id").append('<option>Select Elevator</option>');
+        $("#intervention_elevator_id").append('<option value="">None</option>');
         $.each(result, function(i, h) {
           var row = '<option value="' + h.id + '">' + h.id + '</option>';
           $(row).appendTo("#intervention_elevator_id")
@@ -112,29 +112,41 @@
 
 <form class="">
 
-<%= form.label :Choose_a_customer, class:"fadeIn", style:"color: blue" %>
-<%= form.select(:customer_id, Customer.all.collect {|p| [p.compagny_name, p.id]}.sort_by(&:first), {prompt: ""}) %> 
-      
-<%= form.label :Choose_a_building, class:"text-center", style:"color: red" %>
-<%= form.select(:building_id, Building.all.collect {|t| [t.id, t.customer_id ]}) %>
-     
-<%= form.label :Choose_a_battery, class:"text-center", style:"color: blue" %>
-<%= form.select(:battery_id, Battery.all.collect {|b| [b.id, b.building_id ]}) %>
+<%= form.label :Choose_a_customer, class:"fadeIn", style:"color: black" %>
+<%= form.select(:customer_id, Customer.all.collect {|p| [p.compagny_name, p.id]}.sort_by(&:first), :class=>"col-md-2") %> 
 
-<%= form.label :Choose_a_column, class:"text-center", style:"color: red" %>
-<%= form.select(:column_id, Column.all.collect {|c| [c.id, c.battery_id ]}) %>
+<div id="buildinghide">      
+<%= form.label :Choose_a_building, class:"text-center", style:"color: black" %>
+<%= form.select(:building_id, Building.all.collect {|t| [t.id, t.customer_id ]}, :class=>"col-md-2") %>
+</div>
 
-<%= form.label :Choose_a_elevator, class:"text-center", style:"color: blue" %>
-<%= form.select(:elevator_id, Elevator.all.collect {|e| [e.id, e.column_id ]}) %>
+<div id="batteryhide"> 
+<%= form.label :Choose_a_battery, class:"text-center", style:"color: black" %>
+<%= form.select(:battery_id, Battery.all.collect {|b| [b.id, b.building_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
+</div>
 
-<%= form.label :Choose_a_employee, class:"text-center", style:"color: red" %>
-<%= form.select(:employee_id, Employee.all.collect {|m| [m.first_name + " " + m.last_name, m.id]}, {prompt: "None"}) %>
- 
-<%= form.label :Description, class:"text-center", style:"color: blue" %>
-<%= form.text_area :report, cols: "75", rows: "10" %>
+<div id="columnhide"> 
+<%= form.label :Choose_a_column, class:"text-center", style:"color: black" %>
+<%= form.select(:column_id, Column.all.collect {|c| [c.id, c.battery_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
+</div>
 
-<div>    
-<%= form.submit class:"btn btn-danger", value: "Submit"%>
+<div id="elevatorhide"> 
+<%= form.label :Choose_a_elevator, class:"text-center", style:"color: black" %>
+<%= form.select(:elevator_id, Elevator.all.collect {|e| [e.id, e.column_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
+</div>
+
+<div id=""> 
+<%= form.label :Choose_a_employee, class:"text-center", style:"color: black" %>
+<%= form.select(:employee_id, Employee.all.collect {|m| [m.first_name + " " + m.last_name, m.id]}, :class=>"col-md-2") %>
+</div>
+
+<div id=""> 
+<%= form.label :Description, class:"text-center", style:"color: black" %>
+<%= form.text_area :report, cols: "32", rows: "2" %>
+</div>
+
+<div id="">    
+<%= form.submit value: "Submit", :class=>"col-md-2 btn btn-danger" %>
 </div> 
 </form>
 
