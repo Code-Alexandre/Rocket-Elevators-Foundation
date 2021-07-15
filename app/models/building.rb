@@ -3,5 +3,5 @@ class Building < ApplicationRecord
     belongs_to :customer, class_name: "Customer", optional: true
     has_one :building_detail
     has_many :batteries
-    has_many :interventions 
+
 end

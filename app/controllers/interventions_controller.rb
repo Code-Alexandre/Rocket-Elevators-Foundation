@@ -1,11 +1,11 @@
 class InterventionsController < ApplicationController
   before_action :set_intervention, only: %i[ show edit update destroy ]
-  before_action :has_access
+  before_action :check_access
   # GET /interventions or /interventions.json
   def index
     @interventions = Intervention.all
   end
-  def has_access
+  def check_access
     if current_user
       if current_user.employee|| current_user.is_admin
       else
@@ -15,7 +15,7 @@ class InterventionsController < ApplicationController
       end    
     else
       respond_to do |format|
-        format.html { redirect_to (root_path + 'users/sign_in'), notice: "You need to be sign in as an Employee !" }
+        format.html { redirect_to (root_path + 'users/sign_in'), notice: "ign in as an Employee !" }
       end
     end        
   end
@@ -41,20 +41,10 @@ class InterventionsController < ApplicationController
     @intervention.status = 'Pending'
     @intervention.start_date = 'null'
     @intervention.end_date = 'null'
-    @intervention.employee_id
-    @intervention.valid?
-    if @intervention.elevator_id
-        @intervention.battery_id
-        @intervention.column_id
-    elsif @intervention.column_id
-        @intervention.battery_id
-        @intervention.elevator_id
-    elsif @intervention.battery_id
-        @intervention.column_id
-        @intervention.elevator_id
-    end
+    # @intervention.valid?
 
-    @intervention.save
+
+
 
     respond_to do |format| 
       if @intervention.save
