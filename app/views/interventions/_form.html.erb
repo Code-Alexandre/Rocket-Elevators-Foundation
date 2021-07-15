@@ -117,7 +117,7 @@
 
 <div id="buildinghide">      
 <%= form.label :Choose_a_building, class:"text-center", style:"color: black" %>
-<%= form.select(:building_id, Building.all.collect {|t| [t.id, t.customer_id ]}, :class=>"col-md-2") %>
+<%= form.select(:building_id, Building.all.collect {|t| [t.id, t.customer_id ]}) %>
 </div>
 
 <div id="batteryhide"> 
