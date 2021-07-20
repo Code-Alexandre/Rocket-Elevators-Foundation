@@ -20,8 +20,6 @@
     column1 = $('#intervention_column_id');
     elevator1 = $('#intervention_elevator_id');
 
-    
-
     building1.css("visibility", "hidden");
     battery1.css("visibility", "hidden");
     column1.css("visibility", "hidden");
@@ -112,31 +110,31 @@
 
 <form class="">
 
-<%= form.label :Choose_a_customer, class:"fadeIn", style:"color: black" %>
+<%= form.label :customer_id, class:"fadeIn", style:"color: black" %>
 <%= form.select(:customer_id, Customer.all.collect {|p| [p.compagny_name, p.id]}.sort_by(&:first), :class=>"col-md-2") %> 
 
-<div id="buildinghide">      
-<%= form.label :Choose_a_building, class:"text-center", style:"color: black" %>
+    
+<%= form.label :building_id, class:"text-center", style:"color: black", id: "buildinghide" %>
 <%= form.select(:building_id, Building.all.collect {|t| [t.id, t.customer_id ]}) %>
-</div>
 
-<div id="batteryhide"> 
-<%= form.label :Choose_a_battery, class:"text-center", style:"color: black" %>
+
+
+<%= form.label :battery_id, class:"text-center", style:"color: black", id: "batteryhide" %>
 <%= form.select(:battery_id, Battery.all.collect {|b| [b.id, b.building_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
-</div>
 
-<div id="columnhide"> 
-<%= form.label :Choose_a_column, class:"text-center", style:"color: black" %>
+
+
+<%= form.label :column_id, class:"text-center", style:"color: black", id: "columnhide"  %>
 <%= form.select(:column_id, Column.all.collect {|c| [c.id, c.battery_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
-</div>
 
-<div id="elevatorhide"> 
-<%= form.label :Choose_a_elevator, class:"text-center", style:"color: black" %>
+
+
+<%= form.label :elevator_id, class:"text-center", style:"color: black", id: "elevatorhide"  %>
 <%= form.select(:elevator_id, Elevator.all.collect {|e| [e.id, e.column_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
-</div>
+
 
 <div id=""> 
-<%= form.label :Choose_a_employee, class:"text-center", style:"color: black" %>
+<%= form.label :employee_id, class:"text-center", style:"color: black" %>
 <%= form.select(:employee_id, Employee.all.collect {|m| [m.first_name + " " + m.last_name, m.id]}, :class=>"col-md-2") %>
 </div>
 

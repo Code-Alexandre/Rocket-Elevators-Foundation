@@ -77,12 +77,11 @@ gem 'rails_admin', github: 'sferik/rails_admin'
 gem "rails_admin_map_field"
 gem 'gmaps4rails'
 
+gem 'open-weather', '~> 0.11.0'
 
 gem 'pg', '~> 0.18.4'
 
 gem 'rails_admin_google_map'
-
-gem 'figaro'
 
 gem "slack-notifier"
 
@@ -92,7 +91,14 @@ gem "dropbox_api"
 
 gem 'sendgrid-ruby'
 
-gem 'zendesk_api'
+# gem 'zendesk_api'
 
 gem 'ibm_watson'
+
+gem 'rest-client', '~> 2.1.0'
+
+
+group :development, :test do
+  gem 'rspec-rails', '~> 4.1.0'
+end
 
