@@ -3,6 +3,7 @@ class InterventionsController < ApplicationController
   before_action :check_access
   # GET /interventions or /interventions.json
   def index
+    redirect_to index_url
     @interventions = Intervention.all
   end
   def check_access
@@ -22,6 +23,7 @@ class InterventionsController < ApplicationController
 
   # GET /interventions/show
   def show
+    redirect_to index_url
   end
   # GET /interventions/create
   def create
@@ -62,11 +64,13 @@ class InterventionsController < ApplicationController
   end 
   # GET /interventions/new
   def new
+    redirect_to index_url
     @intervention = Intervention.new
   end
 
   # GET /interventions/edit
   def edit
+    redirect_to index_url
   end
   # GET /interventions/update
   def update

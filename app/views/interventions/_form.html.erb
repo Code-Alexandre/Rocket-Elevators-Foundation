@@ -108,7 +108,7 @@
 
 </script>
 
-<form class="">
+
 
 <%= form.label :customer_id, class:"fadeIn", style:"color: black" %>
 <%= form.select(:customer_id, Customer.all.collect {|p| [p.compagny_name, p.id]}.sort_by(&:first), :class=>"col-md-2") %> 
@@ -133,20 +133,19 @@
 <%= form.select(:elevator_id, Elevator.all.collect {|e| [e.id, e.column_id ]}, {prompt: "-None-"}, :class=>"col-md-2") %>
 
 
-<div id=""> 
+
 <%= form.label :employee_id, class:"text-center", style:"color: black" %>
 <%= form.select(:employee_id, Employee.all.collect {|m| [m.first_name + " " + m.last_name, m.id]}, :class=>"col-md-2") %>
-</div>
 
-<div id=""> 
+
 <%= form.label :Description, class:"text-center", style:"color: black" %>
 <%= form.text_area :report, cols: "32", rows: "2" %>
-</div>
 
-<div id="">    
+
+  
 <%= form.submit value: "Submit", :class=>"col-md-2 btn btn-danger" %>
-</div> 
-</form>
+
+
 
      
 <% end %>

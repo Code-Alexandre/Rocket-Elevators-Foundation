@@ -27,13 +27,12 @@ describe ElevatorMedia::Streamer do
             expect(streamer).to receive(:getChuckNorrisQuote).and_return({value: {joke: 'Chuck Norris joke received'}}.to_json) 
             streamer.getContent('chuck_norris')
         end
-
+        
+    end
         # Testing if the Chuck Norris database returns a succesful quote, printing a quote in the console
         it 'got response from Chuck Norris database' do
             json_response = JSON.parse(streamer.getChuckNorrisQuote)
             p json_response
             expect(json_response["type"]).to eq("success")
-        end
-    
-    end    
+        end   
 end

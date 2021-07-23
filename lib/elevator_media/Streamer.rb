@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'elevator_media/Streamer'
 require 'rest-client'
-# require 'open_weather'
+require 'open_weather'
 
 module ElevatorMedia 
     class Streamer
@@ -16,8 +16,11 @@ module ElevatorMedia
 
         def getHtmlFromCloud(type)
             if type == 'chuck_norris'  
-              return "<div class='elevator-media-streamer-content'>#{JSON.parse(self.getChuckNorrisQuote)['value']['joke']}</div>"  
-            end 
+                return "<div class='elevator-media-streamer-content'>#{JSON.parse(self.getChuckNorrisQuote)['value']['joke']}</div>"  
+            end
+            if type == 'weather'  
+                return "<div class='elevator-media-streamer-content'>#{self.getWeather}</div>"  
+            end  
         end
 
         def getChuckNorrisQuote
