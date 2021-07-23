@@ -38,3 +38,8 @@ https://code-alexandre.azurewebsites.net/api/intervention/1/InProgress
 12-Change the status of the request for action to "Completed" and add an end date and time (Timestamp). 
 https://code-alexandre.azurewebsites.net/api/intervention/1/Completed
 
+Week 10 Quality and TDD / Security
+
+This week, we created a module called ElevatorMedia using the test-driven-development method. It is located in 'lib' folder and the tests are in the 'spec' folder. I also tried making the same test using javascript and jest which are located on this repo: https://github.com/Code-Alexandre/Rocket-Elevators-Foundation-javascript.git
+
+For the Security part, I created a google Docs and here is the url to read it: https://docs.google.com/document/d/15wUTH16e-d9lIoeVEMnSQJ1IT-f4BH0Wsf_lex4Fsqw/edit#
