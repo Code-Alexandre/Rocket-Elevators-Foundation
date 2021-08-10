@@ -11,7 +11,7 @@ describe "Contact Us Form", type: :feature do
         fill_in 'lead_project_name', with: 'Coding'
         select 'Residential', from: 'lead[departement]'
         fill_in 'lead_project_description', with: 'Hello world'
-        fill_in 'lead_message', with: 'I like elevatorrr'
+        fill_in 'lead_message', with: 'I like elevatoR'
     end
     click_button 'SEND MESSAGE'
     expect(page).to have_current_path '/index'

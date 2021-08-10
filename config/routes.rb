@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   get '/quote', to: 'website#quote'
 
+  get '/machineLearning', to: 'website#machineLearning'
+
   post '/watson/greetings', to: 'watson#greetings'
 
 

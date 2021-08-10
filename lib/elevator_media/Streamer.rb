@@ -18,9 +18,6 @@ module ElevatorMedia
             if type == 'chuck_norris'  
                 return "<div class='elevator-media-streamer-content'>#{JSON.parse(self.getChuckNorrisQuote)['value']['joke']}</div>"  
             end
-            if type == 'weather'  
-                return "<div class='elevator-media-streamer-content'>#{self.getWeather}</div>"  
-            end  
         end
 
         def getChuckNorrisQuote
