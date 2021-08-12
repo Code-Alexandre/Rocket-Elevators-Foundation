@@ -21,7 +21,6 @@
 		
 		smoothscroll 			= create a browser smooth scroll
 		enable-animation		= enable WOW animations
-
 		bg-grey					= grey background
 		grain-grey				= grey grain background
 		grain-blue				= blue grain background
@@ -46,11 +45,9 @@
 
 			<!-- 
 				AVAILABLE HEADER CLASSES
-
 				Default nav height: 96px
 				.header-md 		= 70px nav height
 				.header-sm 		= 60px nav height
-
 				.b-0 		= remove bottom border (only with transparent use)
 				.transparent	= transparent header
 				.translucent	= translucent header
@@ -65,9 +62,7 @@
 				shadow-after-2 	= shadow 2 header bottom
 				shadow-before-3 = shadow 3 header top
 				shadow-after-3 	= shadow 3 header bottom
-
 				.clearfix		= required for mobile menu, do not remove!
-
 				Example Usage:  class="clearfix sticky header-sm transparent b-0"
 			-->
 			<div id="header" class="navbar-toggleable-md sticky clearfix">
@@ -259,7 +254,6 @@
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
 
-
 		<!-- JAVASCRIPT FILES -->
 		<script>var plugin_path = 'assets/plugins/';
     
@@ -268,7 +262,6 @@
     var createVoiceProfileButton;
     var identifySpeakerButton;
     var deleteProfileButton;
-;
 
     // subscription key and region for speech services.
     var subscriptionKey, serviceRegion;
@@ -355,7 +348,7 @@
 
             createVoiceProfileButton.disabled = false;
           });
-      });``
+      });
 
       identifySpeakerButton.addEventListener("click", function () {
         let testAudioConfig = SpeechSDK.AudioConfig.fromWavFileInput(testFile);
@@ -415,16 +408,14 @@
         }
       }
     });
+    </script>
 
-    <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+    <%= javascript_include_tag 'microsoft.cognitiveservices.speech.sdk.bundle.js' %>
 
-    <!-- Speech SDK Authorization token -->
     <script>
-    // Note: Replace the URL with a valid endpoint to retrieve
-    //       authorization tokens for your subscription.
-    var authorizationEndpoint = "token.php";
+      var authorizationEndpoint = "token.php";
 
-    function RequestAuthorizationToken() {
+      function RequestAuthorizationToken() {
       if (authorizationEndpoint) {
         var a = new XMLHttpRequest();
         a.open("GET", authorizationEndpoint);
@@ -437,11 +428,9 @@
             subscriptionKey.disabled = true;
             subscriptionKey.value = "using authorization token (hit F5 to refresh)";
             console.log("Got an authorization token: " + token);
+          }
         }
       }
-    }
     </script>
-	
-		
-	</body>
+  </body>
 </html>

@@ -15,4 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Rails.application.config.assets.precompile += %w( scripts.js )
 Rails.application.config.assets.precompile += %w( scriptsquote.js )
+Rails.application.config.assets.precompile += %w( microsoft.cognitiveservices.speech.sdk.bundle.js )
 Rails.application.config.assets.precompile += %w( scriptsintervention.js )
