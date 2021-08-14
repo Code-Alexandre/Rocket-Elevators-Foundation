@@ -95,6 +95,8 @@ gem 'sendgrid-ruby'
 
 gem 'ibm_watson'
 
+gem 'excon'
+
 gem 'rest-client', '~> 2.1.0'
 
 

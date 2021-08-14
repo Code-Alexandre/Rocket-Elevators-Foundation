@@ -125,6 +125,7 @@ GEM
       oauth2 (~> 1.1)
     erubi (1.10.0)
     eventmachine (1.2.7)
+    excon (0.85.0)
     execjs (2.8.1)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
@@ -402,6 +403,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.2)
   dropbox_api
+  excon
   faker
   font-awesome-rails
   gmaps4rails
