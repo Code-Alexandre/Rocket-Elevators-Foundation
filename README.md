@@ -45,7 +45,11 @@ This week, we created a module called ElevatorMedia using the test-driven-develo
 For the Security part, I created a google Docs and here is the url to read it: https://docs.google.com/document/d/15wUTH16e-d9lIoeVEMnSQJ1IT-f4BH0Wsf_lex4Fsqw/
 
 Week 13 Machine Learning
+
+
 For the profil 
+
+
 select folder profil/Alex.wav
 select folder profil/AlexFR.wav
 select folder profil/math-En.wav
@@ -54,6 +58,8 @@ select folder profil/Eng-Emmanuel-new.wav
 select folder profil/FR-Emmanuel-new.wav
 
 For the Conversation test Identify
+
+
 profil/Alex.wav = convo/mathieu-3.wav
 profil/AlexFR.wav = convo/mathieu-6.wav or convo/mathieu-7.wav or convo/mathieu-8.wav or convo/mathieu-9.wav or convo/mathieu-10.wav
 profil/math-En.wav = convo/mathieu-4.wav
