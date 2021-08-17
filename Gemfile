@@ -97,6 +97,8 @@ gem 'ibm_watson'
 
 gem 'excon'
 
+gem 'newrelic_rpm'
+
 gem 'rest-client', '~> 2.1.0'
 
 
